@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Generator</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Table Generator</h1>
+        <form id="tableForm">
+            <div class="form-group">
+                <label for="number">Enter a number:</label>
+                <input type="number" class="form-control" id="number" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Generate Table</button>
+        </form>
+        <div id="tableResult" class="mt-4">
+            <!-- Table will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('tableForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            // Get the number entered by the user
+            const number = parseInt(document.getElementById('number').value);
+
+    
+            const tableData = Array.from({ length: 10 }, (_, index) => {
+                const multiplier = index + 1;
+                const result = number * multiplier;
+                return { multiplier, result };
+            });
+
+
+            const tableHtml = `
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${tableData.map(data => `
+                            <tr>
+                                <td>${number} x ${data.multiplier}</td>
+                                <td>${data.result}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            document.getElementById('tableResult').innerHTML = tableHtml;
+        });
+    </script>
+</body>
+</html>
