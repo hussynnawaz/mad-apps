@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form>
+<label for="firstName">First Name</label>
+    <input type="text" id="firstName" placeholder="First Name">
+    <br>   
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" placeholder="Last Name">
+    <br>
+    <label for="registrationNumber">Registration Number</label>
+    <input type="text" id="registrationNumber" placeholder="Registration Number">
+    <br>
+    <label for="age">Age</label>
+    <input type="number" id="age" placeholder="Age">   
+    <br>
+    <label for="semester">Semester</label>
+    <input type="number" id="semester" placeholder="Semester">
+    <br>
+    <label for="address">Address</label>
+    <input type="text-area" id="address" placeholder="Address">
+    <br>
+    <button type="button" class="btn btn-success" onclick="addStudent()">Add Student</button>
+    <br>
+    <br>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Registration Number</th>
+                <th>Age</th>
+                <th>Semester</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody id="studentTable">
+        </tbody>
+    </body>
+      <!-- Add Bootstrap JS and jQuery -->
+
+
+<script>
+    function addStudent(event) {
+        event.preventDefault();
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const regNumber = document.getElementById('registrationNumber').value;
+        const age = document.getElementById('age').value;
+        const semester = document.getElementById('semester').value;
+        const address = document.getElementById('address').value;
+
+        const student = {
+            firstName,
+            lastName,
+            regNumber,
+            age,
+            semester,
+            address
+        };
+
+        students.push(student);
+        displayStudents();
+        clearForm();
+    }
+
+    // Function to clear the form after adding a student
+    function clearForm() {
+        document.getElementById('firstName').value = '';
+        document.getElementById('lastName').value = '';
+        document.getElementById('registrationNumber').value = '';
+        document.getElementById('age').value = '';
+        document.getElementById('semester').value = '';
+        document.getElementById('address').value = '';
+    }
+
+
+    function displayStudents() {
+        const studentList = document.getElementById('studentList');
+        studentList.innerHTML = '';
+
+        students.forEach((student, index) => {
+            const studentCard = document.createElement('div');
+            studentCard.className = 'card mt-2';
+            studentCard.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">${student.firstName} ${student.lastName}</h5>
+                    <p class="card-text">
+                        Registration Number: ${student.regNumber}<br>
+                        Age: ${student.age}<br>
+                        Semester: ${student.semester}<br>
+                        Address: ${student.address}
+                    </p>
+                </div>
+            `;
+            studentList.appendChild(studentCard);
+        });
+    }
+
+    // Function to search for a student by registration number
+    function searchStudent() {
+        const searchInput = document.getElementById('searchInput').value;
+        const result = students.filter(student => student.regNumber === searchInput);
+
+        const studentList = document.getElementById('studentList');
+        studentList.innerHTML = '';
+
+        if (result.length === 0) {
+            studentList.innerHTML = '<p>No matching student found.</p>';
+        } else {
+            result.forEach((student, index) => {
+                const studentCard = document.createElement('div');
+                studentCard.className = 'card mt-2';
+                studentCard.innerHTML = `
+                    <div class="card-body">
+                        <h5 class="card-title">${student.firstName} ${student.lastName}</h5>
+                        <p class="card-text">
+                            Registration Number: ${student.regNumber}<br>
+                            Age: ${student.age}<br>
+                            Semester: ${student.semester}<br>
+                            Address: ${student.address}
+                        </p>
+                    </div>
+                `;
+                studentList.appendChild(studentCard);
+            });
+        }
+    }
+
+    // Attach the addStudent function to the form's submit event
+    document.getElementById('studentForm').addEventListener('submit', addStudent);
+</script>
+
+</script>
+</html>
