@@ -85,41 +85,75 @@ const newArr2 = myArray.map(function(item) {
 for (let item of newArr2) {
     console.log(item);
 }
-// Program 11 Calling a method with a button
-<>
-<script>
-function myFunction() {
-    alert ("Button is Clicked");
-}
-</script>
-<>
-<button onclick="myFunction()">Click Me</button>
-<>
-// Program 12 Calling method with a button using event listener
-</>
-<>
-<button id="myBtn">Click Me</button>
-</>
-<>
-class Car{
-    constructor (name)
-    {
-        this.brand = name;
+//import React from 'react';
+
+function MyComponent() {
+  // Program 11: Calling a method with a button
+  function myFunction() {
+    alert("Button is Clicked");
+  }
+
+  // Program 12: Calling method with a button using event listener
+  class Car {
+    constructor(name) {
+      this.brand = name;
     }
-    display()
-    {
-        console.log(this.brand);
+
+    display() {
+      console.log(this.brand);
     }
+  }
+
+  const mycar = new Car("Ford");
+  mycar.display();
+
+  const myFunction = () => {
+    alert("Button is Clicked");
+  }
+
+  const handleButtonClick = () => {
+    myFunction();
+  }
+
+  // Program 13: JavaScript map method example with a normal function
+  const myArray = [1, 2, 3, 4, 5];
+  const newArr = myArray.map(function (item) {
+    return item * 10;
+  });
+
+  for (let item of newArr) {
+    console.log(item);
+  }
+
+  return (
+    <div>
+      {/* Program 11 button */}
+      <button onClick={myFunction}>Click Me</button>
+
+      {/* Program 12 button */}
+      <button id="myBtn" onClick={handleButtonClick}>Click Me</button>
+    </div>
+  );
 }
-</>
-<>
-mycar = new Car("Ford");
-mycar.display();
-myFunction = () => {
-    alert ("Button is Clicked");
+// Program 14: JavaScript map method example with an arrow function
+const myArray = [1, 2, 3, 4, 5];
+const newArr = myArray.map((item) => item * 10);
+console.log(newArr);
+// Program 16 JavaScript Map Function in ReactJS
+import React from 'react'
+
+function JavaScriptMapFunction() {
+    const colors = ["Red", "Green", "Blue", "Yellow", "White", "Black"];
+    const newColors = colors.map((item) => <li>{item}</li>);
+
+  return (
+    <>
+    <div>
+        <h1>JavaScript Map Function in React JS</h1>
+       
+    </div>
+    </>
+  )
 }
-</>
-<>
-var myBtn = document.getElementById("myBtn");
-myBtn.addEventListener("click", myFunction);
-</>
+
+export default JavaScriptMapFunction
