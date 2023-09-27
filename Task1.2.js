@@ -1,3 +1,14 @@
+/*
+Create a javascript class Person with attributes: id, name, age.
+Derive two classes from person, named Student and Teacher.
+The extra attributes of Student are cgpa, currently enrolled semester (e.g., FA22 or SP22, etc),
+admission date.
+The extra attributes of Teacher are salary, designation (Lecturer, Assistant Professor, Professor, etc),
+department, and joining date.
+Populate at least 3 records in each class use class objects.
+A user should be able to search a student or teacher with the provided ID. To manage that you
+should store objects of Teacher and Student in an array.
+*/
 class Person {
     constructor(id, name, age) {
         this.id = id;
