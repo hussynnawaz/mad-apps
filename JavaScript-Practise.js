@@ -13,7 +13,7 @@ class Car
     }
 
     
-    mycar = new Car("Ford");
+   const mycar = new Car("Ford");
     mycar.display();
     console.log(mycar.brand);
     console.log(mycar instanceof Car);  
@@ -85,9 +85,41 @@ const newArr2 = myArray.map(function(item) {
 for (let item of newArr2) {
     console.log(item);
 }
-
 // Program 11 Calling a method with a button
+<>
+<script>
 function myFunction() {
     alert ("Button is Clicked");
 }
+</script>
+<>
 <button onclick="myFunction()">Click Me</button>
+<>
+// Program 12 Calling method with a button using event listener
+</>
+<>
+<button id="myBtn">Click Me</button>
+</>
+<>
+class Car{
+    constructor (name)
+    {
+        this.brand = name;
+    }
+    display()
+    {
+        console.log(this.brand);
+    }
+}
+</>
+<>
+mycar = new Car("Ford");
+mycar.display();
+myFunction = () => {
+    alert ("Button is Clicked");
+}
+</>
+<>
+var myBtn = document.getElementById("myBtn");
+myBtn.addEventListener("click", myFunction);
+</>
